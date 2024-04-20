@@ -92,7 +92,7 @@ modules:
       - install -D flatpak/launch.desktop /app/share/applications/com.core447.StreamController.desktop
       - install -D flatpak/com.core447.StreamController.metainfo.xml /app/share/metainfo/com.core447.StreamController.metainfo.xml
       - mkdir /app/share/icons/StreamController
-      - cp -r flatpak/com.core447.StreamController/flatpak/icons /app/share/icons/StreamController
+      - cp -r flatpak/icons /app/share/icons/StreamController
     sources:
       - type: git
         url: https://github.com/StreamController/StreamController.git
