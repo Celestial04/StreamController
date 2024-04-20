@@ -69,12 +69,12 @@ class OnboardingWindow(Gtk.ApplicationWindow):
         self.carousel_indicator_dots = Adw.CarouselIndicatorDots(carousel=self.carousel)
         self.header.set_title_widget(self.carousel_indicator_dots)
 
-        self.forward_button = Gtk.Button(icon_name="go-next-symbolic", css_classes=["onboarding-nav-button", "circular", "suggested-action"],
+        self.forward_button = Gtk.Button(icon_name="com.core447.StreamController:go-next-symbolic", css_classes=["onboarding-nav-button", "circular", "suggested-action"],
                                          halign=Gtk.Align.END, valign=Gtk.Align.CENTER, margin_end=15)
         self.forward_button.connect("clicked", self.on_forward_button_click)
         self.overlay.add_overlay(self.forward_button)
 
-        self.back_button = Gtk.Button(icon_name="go-previous-symbolic", css_classes=["onboarding-nav-button", "circular", "suggested-action"],
+        self.back_button = Gtk.Button(icon_name="com.core447.StreamController:go-previous-symbolic", css_classes=["onboarding-nav-button", "circular", "suggested-action"],
                                       halign=Gtk.Align.START, valign=Gtk.Align.CENTER, margin_start=15,
                                       visible=False)
         self.back_button.connect("clicked", self.on_back_button_click)
@@ -168,7 +168,7 @@ class ExtensionOnboardingScreen(Gtk.Box):
         self.build()
 
     def build(self):
-        self.image = Gtk.Image(icon_name="folder-download-symbolic", pixel_size=250, margin_top=70)
+        self.image = Gtk.Image(icon_name="com.core447.StreamController:folder-download-symbolic", pixel_size=250, margin_top=70)
         self.append(self.image)
 
         self.label = Gtk.Label(label=gl.lm.get("onboarding.extension.header"), css_classes=["onboarding-welcome-label"], margin_top=50)

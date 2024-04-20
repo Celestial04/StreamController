@@ -39,7 +39,7 @@ class MenuButton(Gtk.MenuButton):
     def __init__(self, pageEditor: "PageEditor"):
         super().__init__()
         self.pageEditor = pageEditor
-        self.set_icon_name("open-menu-symbolic")
+        self.set_icon_name("com.core447.StreamController:open-menu-symbolic")
 
         self.selected_file: str = None
 

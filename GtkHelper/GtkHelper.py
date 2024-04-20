@@ -355,7 +355,7 @@ class OriginalURL(Adw.ActionRow):
         self.suffix_box = Gtk.Box(valign=Gtk.Align.CENTER)
         self.add_suffix(self.suffix_box)
 
-        self.open_button = Gtk.Button(icon_name="web-browser-symbolic")
+        self.open_button = Gtk.Button(icon_name="com.core447.StreamController:web-browser-symbolic")
         self.open_button.connect("clicked", self.on_open_clicked)
         self.suffix_box.append(self.open_button)
 
@@ -446,10 +446,10 @@ class BackButton(Gtk.Button):
         self.box = Gtk.Box(orientation=Gtk.Orientation.HORIZONTAL, spacing=6)
         self.set_child(self.box)
 
-        self.box.append(Gtk.Image(icon_name="go-previous-symbolic"))
+        self.box.append(Gtk.Image(icon_name="com.core447.StreamController:go-previous-symbolic"))
         self.box.append(Gtk.Label(label=gl.lm.get("go-back")))
 
 class RevertButton(Gtk.Button):
     def __init__(self, **kwargs):
-        super().__init__(icon_name="edit-undo-symbolic", **kwargs)
+        super().__init__(icon_name="com.core447.StreamController:edit-undo-symbolic", **kwargs)
         self.set_tooltip_text("Revert to action defaults")

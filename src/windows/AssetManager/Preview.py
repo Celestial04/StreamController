@@ -55,11 +55,11 @@ class Preview(Gtk.FlowBoxChild):
                                margin_start=20, margin_end=20)
         self.main_box.append(self.label)
 
-        self.info_button = Gtk.Button(icon_name="help-about-symbolic", halign=Gtk.Align.START, valign=Gtk.Align.END, margin_start=5, margin_bottom=5)
+        self.info_button = Gtk.Button(icon_name="com.core447.StreamController:help-about-symbolic", halign=Gtk.Align.START, valign=Gtk.Align.END, margin_start=5, margin_bottom=5)
         self.info_button.connect("clicked", self.on_click_info)
         self.overlay.add_overlay(self.info_button)
 
-        self.remove_button = Gtk.Button(icon_name="user-trash-symbolic", valign=Gtk.Align.END, halign=Gtk.Align.END, margin_end=5, margin_bottom=5, visible=self.can_be_deleted)
+        self.remove_button = Gtk.Button(icon_name="com.core447.StreamController:user-trash-symbolic", valign=Gtk.Align.END, halign=Gtk.Align.END, margin_end=5, margin_bottom=5, visible=self.can_be_deleted)
         self.remove_button.connect("clicked", self.on_click_remove)
         self.overlay.add_overlay(self.remove_button)
 

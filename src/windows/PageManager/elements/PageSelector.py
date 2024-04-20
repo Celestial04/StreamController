@@ -191,7 +191,7 @@ class PageRow(Gtk.ListBoxRow):
         self.set_page_path(self.page_path)
         self.main_box.append(self.label)
 
-        self.menu_button = Gtk.Button(icon_name="view-more-symbolic", halign=Gtk.Align.END, css_classes=["flat"])
+        self.menu_button = Gtk.Button(icon_name="com.core447.StreamController:view-more-symbolic", halign=Gtk.Align.END, css_classes=["flat"])
         # self.main_box.append(self.menu_button) #TODO: Not implemented
     
     def set_page_path(self, page_path: str) -> None:
