@@ -336,7 +336,7 @@ class KeyButton(Gtk.Frame):
         key = self.key_grid.deck_controller.coords_to_index(reversed(self.coords))
         self.key_grid.deck_controller.key_change_callback(deck, key, True)
         # Release key after 100ms
-        GLib.timeout_add(100, self.key_grid.deck_controller.key_change_callback, deck, key, False)
+        GLib.timeout_add(1000, self.key_grid.deck_controller.key_change_callback, deck, key, False)
 
     def set_visible(self, visible):
         if visible:
