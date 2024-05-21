@@ -12,6 +12,7 @@ from rpyc.core.protocol import Connection
 from rpyc.core import netref
 
 # Import own modules
+from src.backend.DeckManagement.Events import KeyEvent
 from src.Signals.Signals import Signal
 from src.backend.DeckManagement.HelperMethods import is_image, is_svg, is_video
 from src.backend.DeckManagement.Subclasses.KeyImage import KeyImage
@@ -107,6 +108,13 @@ class ActionBase(rpyc.Service):
 
     def on_key_hold_stop(self):
         pass
+
+    def on_key_event(self, event: KeyEvent):
+        if event == KeyEvent.DOWN:
+            self.on_key_down()
+        elif event == KeyEvent.UP:
+            self.on_key_up()
+        
 
     def on_tick(self):
         pass

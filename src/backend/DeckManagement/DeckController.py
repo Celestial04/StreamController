@@ -31,6 +31,7 @@ import usb.core
 import usb.util
 from loguru import logger as log
 import asyncio
+from src.backend.DeckManagement.Events import KeyEvent
 from src.backend.DeckManagement.Subclasses.SingleKeyAsset import SingleKeyAsset
 from src.backend.DeckManagement.Subclasses.background_video_cache import BackgroundVideoCache
 from src.backend.DeckManagement.Subclasses.key_video_cache import VideoFrameCache
@@ -1743,14 +1744,15 @@ class ControllerKey:
             state.own_actions_key_down_threaded()
             self.start_hold_timer()
         else:
+            state.own_actions_key_event_threaded(KeyEvent.UP)
             self.stop_hold_timer()
             if self.press_down_start_time is not None:
                 if time.time() - self.press_down_start_time >= self.HOLD_TIME:
                     self.press_down_start_time = None
-                    state.own_actions_key_hold_stop_threaded()
+                    state.own_actions_key_event_threaded(KeyEvent.HOLD_UP)
                     return
                 
-            state.own_actions_key_up_threaded()
+            state.own_actions_key_event_threaded(KeyEvent.SHORT_UP)
 
             self.press_down_start_time = None
 
@@ -1758,7 +1760,7 @@ class ControllerKey:
         state = self.get_active_state()
         if state is None:
             return
-        state.own_actions_key_hold_start_threaded()
+        state.own_actions_key_event_threaded(KeyEvent.HOLD_BEGIN)
 
 
     
@@ -1877,6 +1879,7 @@ class ControllerKeyState:
 
     @log.catch
     def own_actions_key_down(self) -> None:
+        #TODO: Find better way
         for action in self.get_own_actions():
             if isinstance(action, ActionOutdated):
                 _id = action.id
@@ -1890,28 +1893,14 @@ class ControllerKeyState:
                 self.send_missing_plugin_notification(plugin_id=plugin_id)
                 continue
 
-            action.on_key_down()
+            action.on_key_event(KeyEvent.DOWN)
 
     @log.catch
-    def own_actions_key_up(self) -> None:
+    def own_actions_key_event(self, key_event: KeyEvent) -> None:
         for action in self.get_own_actions():
             if not isinstance(action, ActionBase):
                 continue
-            action.on_key_up()
-
-    @log.catch
-    def own_actions_key_hold_start(self) -> None:
-        for action in self.get_own_actions():
-            if not isinstance(action, ActionBase):
-                continue
-            action.on_key_hold_start()
-
-    @log.catch
-    def own_actions_key_hold_stop(self) -> None:
-        for action in self.get_own_actions():
-            if not isinstance(action, ActionBase):
-                continue
-            action.on_key_hold_stop()
+            action.on_key_event(key_event)
 
     @log.catch
     def own_actions_tick(self) -> None:
@@ -1926,14 +1915,8 @@ class ControllerKeyState:
     def own_actions_key_down_threaded(self) -> None:
         threading.Thread(target=self.own_actions_key_down, name="own_actions_key_down").start()
 
-    def own_actions_key_up_threaded(self) -> None:
-        threading.Thread(target=self.own_actions_key_up, name="own_actions_key_up").start()
-
     def own_actions_tick_threaded(self) -> None:
         threading.Thread(target=self.own_actions_tick, name="own_actions_tick").start()
 
-    def own_actions_key_hold_start_threaded(self) -> None:
-        threading.Thread(target=self.own_actions_key_hold_start, name="own_actions_key_hold_start").start()
-
-    def own_actions_key_hold_stop_threaded(self) -> None:
-        threading.Thread(target=self.own_actions_key_hold_stop, name="own_actions_key_hold_stop").start()
+    def own_actions_key_event_threaded(self, event: KeyEvent):
+        threading.Thread(target=self.own_actions_key_event, args=(event,), name="own_actions_key_event").start()
