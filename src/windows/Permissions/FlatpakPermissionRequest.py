@@ -95,7 +95,7 @@ class FlatpakPermissionRequestWindow(Gtk.ApplicationWindow):
                                        wrap=True, wrap_mode=Pango.WrapMode.WORD_CHAR, selectable=True)
         self.command_box.append(self.command_label)
 
-        self.copy_button = Gtk.Button(icon_name="com.core447.StreamController:edit-copy-symbolic",
+        self.copy_button = Gtk.Button(icon_name="edit-copy-symbolic",
                                       tooltip_text=gl.lm.get("permissions-window.copy-tooltip"), halign=Gtk.Align.START, hexpand=False)
         self.copy_button.connect("clicked", self.on_copy)
         self.command_box.append(self.copy_button)

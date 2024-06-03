@@ -24,8 +24,8 @@ class NoConnectionError(Gtk.Box):
         super().__init__(orientation=Gtk.Orientation.VERTICAL,
                          halign=Gtk.Align.CENTER, valign=Gtk.Align.CENTER)
 
-        # self.icon = Gtk.Picture(icon_name="com.core447.StreamController:network-offline")
-        self.icon = Gtk.Image(icon_name="com.core447.StreamController:network-offline", pixel_size=200, margin_bottom=30)
+        # self.icon = Gtk.Picture(icon_name="network-offline")
+        self.icon = Gtk.Image(icon_name="network-offline", pixel_size=200, margin_bottom=30)
         self.append(self.icon)
 
         self.label = Gtk.Label(label="No Connection", css_classes=["error-label"])

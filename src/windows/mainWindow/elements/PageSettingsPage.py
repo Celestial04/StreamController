@@ -73,7 +73,7 @@ class PageSettingsPage(Gtk.Overlay):
         self.stack.add_titled(self.settings_page, "settings", gl.lm.get("main-page-page-settings"))
 
         # # Switch overlay button
-        # self.open_deck_settings_button = Gtk.Button(icon_name="com.core447.StreamController:configure", css_classes=["circular"],
+        # self.open_deck_settings_button = Gtk.Button(icon_name="configure", css_classes=["circular"],
         #                               halign=Gtk.Align.END, valign=Gtk.Align.END, margin_end=20, margin_bottom=50)
         # self.open_deck_settings_button.connect("clicked", self.on_open_deck_settings_button_click)
         # self.add_overlay(self.open_deck_settings_button)
@@ -84,11 +84,11 @@ class PageSettingsPage(Gtk.Overlay):
         self.global_box.append(self.page_box)
 
         for i in range(5):
-            self.icon = Gtk.Image(icon_name="com.core447.StreamController:insert-image", hexpand=False, halign=Gtk.Align.CENTER,
+            self.icon = Gtk.Image(icon_name="insert-image", hexpand=False, halign=Gtk.Align.CENTER,
                                 margin_bottom=15, pixel_size=30)
             self.page_box.append(self.icon)
 
-        self.expand_button = Gtk.ToggleButton(icon_name="com.core447.StreamController:draw-arrow-back", css_classes=["flat"],
+        self.expand_button = Gtk.ToggleButton(icon_name="draw-arrow-back", css_classes=["flat"],
                                               valign=Gtk.Align.END, vexpand=True, margin_bottom=5)
         self.page_box.append(self.expand_button)
 

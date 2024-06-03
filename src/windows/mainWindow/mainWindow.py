@@ -118,7 +118,7 @@ class MainWindow(Adw.ApplicationWindow):
         self.header.pack_end(self.menu_button)
 
         # Add sidebar toggle button to the header bar
-        self.sidebar_toggle_button = Gtk.ToggleButton(icon_name="com.core447.StreamController:sidebar-show-symbolic", active=True)
+        self.sidebar_toggle_button = Gtk.ToggleButton(icon_name="sidebar-show-symbolic", active=True)
         self.sidebar_toggle_button.connect("toggled", self.on_toggle_sidebar)
         # self.header.pack_start(self.sidebar_toggle_button)
 
@@ -317,7 +317,7 @@ class PageRow(Gtk.ListBoxRow):
         self.main_box.append(Gtk.Separator(orientation=Gtk.Orientation.VERTICAL))
 
         self.config_button = Gtk.Button(height_request=30,
-                                        icon_name="com.core447.StreamController:view-more",
+                                        icon_name="view-more",
                                         css_classes=["no-round-left"])
         self.config_button.connect("clicked", self.on_config)
         self.main_box.append(self.config_button)

@@ -286,7 +286,7 @@ class ActionRow(Adw.PreferencesRow):
                                 margin_top=10, margin_bottom=10)
         self.button.set_child(self.main_box)
 
-        # self.icon = Gtk.Image(icon_name="com.core447.StreamController:insert-image", icon_size=Gtk.IconSize.LARGE, margin_start=5)
+        # self.icon = Gtk.Image(icon_name="insert-image", icon_size=Gtk.IconSize.LARGE, margin_start=5)
         self.icon = action_holder.icon
         if action_holder.icon.get_parent() is not None:
             self.action_holder.icon.get_parent().remove(self.action_holder.icon)
