@@ -114,8 +114,8 @@ class HeaderHamburgerMenuButton(Gtk.MenuButton):
 
         self.about.add_legal_section(
             "Icons",
-            "StreamController uses Papirus icons",
-            Gtk.License.GPL_3_0,
+            "StreamController uses and ships Adwaita icons",
+            license_type=Gtk.License.CUSTOM,
             license=None
         )
 
